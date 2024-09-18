@@ -1,0 +1,407 @@
+{
+  "id": "https://openebench.bsc.es/monitor/agent/agent.json",
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "title": "Benchmarking Agents Schema",
+  "definitions": {
+      "Dependencies": {
+        "type": "object",
+        "properties": {
+          "build_system": {
+            "description": "build system used to build the agent (maven, cmake, ant..)",
+            "type": "string"
+          },
+          "build": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "runtime": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "Support": {
+        "type": "object",
+        "properties": {
+          "helpdesk": {
+            "description": "helpdesk providing support in using the software",
+            "type": "string",
+            "format": "uri"
+          },
+          "issue_tracker": {
+            "description": "tracker for the project issues, bug reports, feature requests etc.",
+            "type": "string",
+            "format": "uri"
+          },
+          "mailing_list": {
+            "description": "mailing list for the project announcements, discussions, support etc.",
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "Credit": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "name of credited entity",
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "orcid": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "comment": {
+            "type": "string"
+          }
+        }
+      },
+      "Documentation": {
+        "type": "object",
+        "properties": {
+          "manual": {
+            "description": "link to the manual",
+            "type": "string",
+            "format": "uri"
+          },
+          "terms_of_use": {
+            "type": "string",
+            "format": "uri"
+          },
+          "training_material": {
+            "type": "string",
+            "format": "uri"
+          },
+          "citation_instructions": {
+            "type": "string",
+            "format": "uri"
+          },
+          "doc_links": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "general": {
+            "type": "string",
+            "format": "uri"
+          },
+          "help": {
+            "type": "string",
+            "format": "uri"
+          },
+          "faq": {
+            "type": "string",
+            "format": "uri"
+          },
+          "tutorial": {
+            "description": "link to the tutorial",
+            "type": "string",
+            "format": "uri"
+          },
+          "build_instructions": {
+            "description": "link to the instructions for building the software",
+            "type": "string",
+            "format": "uri"
+          },
+          "api": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "Publication": {
+        "type": "object",
+        "properties": {
+          "doi": {
+            "type": "string"
+          },
+          "pmcid": {
+            "type": "string"
+          },
+          "pmid": {
+            "type": "string"
+          }
+        }
+      },
+      "Community": {
+        "type": "object",
+        "properties": {
+          "social_media": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        }
+      },
+      "Container": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri"   
+          }
+        }
+      },
+      "VMImage": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri"   
+          }
+        }
+      },
+      "Distributions": {
+        "type": "object",
+        "properties": {
+          "binaries": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "binary_packages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "sourcecode": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "source_packages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "vre": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "containers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Container"
+            }
+          },
+          "vm_images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/VMImage"
+            }
+          }
+        }
+      },
+      "Datatype": {
+        "type": "object",
+        "properties": {
+          "datatype": {
+            "type": "string",
+            "format": "uri"
+          },
+          "formats": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "Semantics": {
+        "type": "object",
+        "properties": {
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "operations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Datatype"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Datatype"
+            }
+          }
+        }
+      },
+      "Web": {
+        "type": "object",
+        "properties": {
+          "homepage": {
+            "type": "string",
+            "format": "uri"
+          },
+          "copyright": {
+            "type": "string"     
+          },
+          "license": {
+            "type": "string"     
+          }
+        }
+      }
+  },
+
+  "type": "object",
+  "properties": {
+      "@id": {
+           "type": "string",
+            "format": "uri"
+            },
+      "@type": {
+            "type": "string"
+      },
+      "name": {
+            "type": "string"
+      },
+      "xid": {
+            "description": "original (external) identifier used by the datasource",
+            "type": "string"
+      },
+      "alt_ids": {
+            "description": "alternative agent identifiers",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+      },
+      "depricated": {
+            "description": "the agent changed its id or was removed from the original repository",
+            "type": "boolean"
+      },
+      "web": {
+            "$ref": "#/definitions/Web"
+      },
+      "repositories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+      },
+      "brief": {
+            "description": "short and concise textual description of the agent",
+            "type": "string"
+      },
+      "description": {
+            "description" : "high-level description of the agent",
+            "type": "string"
+      },
+      "license": {
+            "type": "string"
+      },
+      "maturity": {
+            "type": "string"
+      },
+      "cost": {
+            "type": "string"
+      },
+      "dependencies": {
+            "$ref": "#/definitions/Dependencies"
+      },
+      "support": {
+            "$ref": "#/definitions/Support"
+      },
+      "community": {
+            "$ref": "#/definitions/Community"
+      },
+      "distributions": {
+            "$ref": "#/definitions/Distributions"
+      },
+      "documentation": {
+            "$ref": "#/definitions/Documentation"
+      },
+      "semantics": {
+            "$ref": "#/definitions/Semantics"
+      },
+      "publications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Publication"
+            }
+      },
+      "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Contact"
+            }
+      },
+      "credits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Credit"
+            }
+      }
+   }
+}

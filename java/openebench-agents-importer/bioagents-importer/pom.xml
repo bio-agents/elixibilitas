@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>es.iechor.bsc.elixibilitas</groupId>
+        <artifactId>openebench-agents-importer</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>bioagents-importer</artifactId>
+    <packaging>jar</packaging>
+
+    <developers>
+        <developer>
+          <id>redmitry</id>
+          <name>Dmitry Repchevsky</name>
+          <email>redmitry@list.ru</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    
+    <dependencies>
+
+        <dependency>
+            <groupId>es.bsc.inb.iechor</groupId>
+            <artifactId>bioagents-schema-model</artifactId>
+            <version>3.2.0</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>es.bsc.inb.iechor</groupId>
+            <artifactId>openebench-repository-client</artifactId>
+            <version>1.0.0</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>inb-bsc-maven</id>
+            <url>https://gitlab.bsc.es/inb/maven/raw/master</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <finalName>bioagents-importer</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>                  
+                    <archive>
+                        <manifest>
+                            <mainClass>es.iechor.bsc.openebench.bioagents.BioagentsImporter</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
