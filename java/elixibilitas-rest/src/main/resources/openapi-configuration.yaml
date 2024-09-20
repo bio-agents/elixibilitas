@@ -1,14 +1,3 @@
-resourcePackages:
-- es.iechor.bsc.openebench.rest
-prettyPrint: true
-cacheTTL: 0
-openAPI:
-  info:
-    version: '0.1'
-    title: OpenEBench REST API services
-    description: 'OpenEBench REST API services'
-    contact:
-      email: https://openebench.bsc.es
-    license:
-      name: LGPL 2.1
-      url: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+version https://git-lfs.github.com/spec/v1
+oid sha256:7b52678eb307698df184b4a49d410c46b739c479745a36ffebf20371a825d0da
+size 356

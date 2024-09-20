@@ -1,10 +1,3 @@
-{
-  "realm": "tmonitor",
-  "auth-server-url": "https://inb.bsc.es/auth",
-  "ssl-required": "external",
-  "resource": "iechor_bench",
-  "public-client": true,
-  "use-resource-role-mappings": true,
-  "enable-basic-auth" : true,
-  "principal-attribute" : "preferred_username"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:133a93fa62cd012766a6412543baea0fedfbedd1ad6066171e874bd464d642da
+size 274
